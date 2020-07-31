@@ -28,6 +28,14 @@ android {
     buildFeatures {
         viewBinding true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -53,6 +61,7 @@ dependencies {
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0"
 
     implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.0'
 
