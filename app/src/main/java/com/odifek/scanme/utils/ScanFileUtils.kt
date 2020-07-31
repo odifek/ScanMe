@@ -2,13 +2,14 @@ package com.odifek.scanme.utils
 
 import android.content.Context
 import android.os.Environment
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-class ScanFileUtils @Inject constructor(private val context: Context) {
+class ScanFileUtils @Inject constructor(@ApplicationContext private val context: Context) {
 
     @Throws(IOException::class)
     fun createImageFile(): File {

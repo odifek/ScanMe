@@ -1,12 +1,9 @@
 package com.odifek.scanme
 
 import android.app.Application
-import com.odifek.scanme.di.Injector
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class ScanApp: Application() {
 
-    override fun onCreate() {
-        super.onCreate()
-        Injector.init(this)
-    }
 }

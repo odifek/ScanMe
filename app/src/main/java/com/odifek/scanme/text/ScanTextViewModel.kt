@@ -2,13 +2,16 @@ package com.odifek.scanme.text
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import kotlin.math.min
 
-class ScanTextViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
+class ScanTextViewModel @ViewModelInject constructor(@Assisted savedStateHandle: SavedStateHandle) :
+    ViewModel() {
 
     val picturePath: MutableLiveData<String?> = savedStateHandle.getLiveData("picturePath")
 
