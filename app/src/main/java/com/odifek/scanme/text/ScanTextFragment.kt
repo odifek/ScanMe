@@ -20,6 +20,7 @@ import javax.inject.Inject
 class ScanTextFragment : Fragment(R.layout.fragment_scan_text) {
 
     private val viewModel: ScanTextViewModel by viewModels()
+
     @Inject
     lateinit var fileUtils: ScanFileUtils
     private var _binding: FragmentScanTextBinding? = null
@@ -28,6 +29,9 @@ class ScanTextFragment : Fragment(R.layout.fragment_scan_text) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentScanTextBinding.bind(view)
 
+        viewModel.decodedText.observe(viewLifecycleOwner) { result ->
+            binding.textViewResult.text = result
+        }
 
         binding.buttonScannow.setOnClickListener {
             launchCamera()
@@ -66,10 +70,11 @@ class ScanTextFragment : Fragment(R.layout.fragment_scan_text) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
 
-            viewModel.decodeBitmap(binding.imageViewResult.width, binding.imageViewResult.height)
+            viewModel.displayBitmap(binding.imageViewResult.width, binding.imageViewResult.height)
                 .observe(viewLifecycleOwner) { bitmap ->
                     binding.imageViewResult.setImageBitmap(bitmap)
                 }
+            viewModel.decodeTextInImage()
         }
     }
 
