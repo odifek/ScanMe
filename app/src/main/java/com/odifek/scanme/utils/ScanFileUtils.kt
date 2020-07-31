@@ -6,8 +6,9 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-class ScanFileUtils(private val context: Context) {
+class ScanFileUtils @Inject constructor(private val context: Context) {
 
     @Throws(IOException::class)
     fun createImageFile(): File {
